@@ -1,0 +1,1894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" version="4.4.1">
+    <Header copyright="Copyright (c) 2021 Software AG" description="Default description">
+        <Application name="Nyoka" version="5.5.0"/>
+        <Timestamp>2024-05-20 02:15:57.360990</Timestamp>
+    </Header>
+    <DataDictionary numberOfFields="21">
+        <DataField name="battery_power" optype="continuous" dataType="double"/>
+        <DataField name="blue" optype="continuous" dataType="double"/>
+        <DataField name="clock_speed" optype="continuous" dataType="double"/>
+        <DataField name="dual_sim" optype="continuous" dataType="double"/>
+        <DataField name="fc" optype="continuous" dataType="double"/>
+        <DataField name="four_g" optype="continuous" dataType="double"/>
+        <DataField name="int_memory" optype="continuous" dataType="double"/>
+        <DataField name="m_dep" optype="continuous" dataType="double"/>
+        <DataField name="mobile_wt" optype="continuous" dataType="double"/>
+        <DataField name="n_cores" optype="continuous" dataType="double"/>
+        <DataField name="pc" optype="continuous" dataType="double"/>
+        <DataField name="px_height" optype="continuous" dataType="double"/>
+        <DataField name="px_width" optype="continuous" dataType="double"/>
+        <DataField name="ram" optype="continuous" dataType="double"/>
+        <DataField name="sc_h" optype="continuous" dataType="double"/>
+        <DataField name="sc_w" optype="continuous" dataType="double"/>
+        <DataField name="talk_time" optype="continuous" dataType="double"/>
+        <DataField name="three_g" optype="continuous" dataType="double"/>
+        <DataField name="touch_screen" optype="continuous" dataType="double"/>
+        <DataField name="wifi" optype="continuous" dataType="double"/>
+        <DataField name="price_range" optype="categorical" dataType="integer">
+            <Value value="0"/>
+            <Value value="1"/>
+            <Value value="2"/>
+            <Value value="3"/>
+        </DataField>
+    </DataDictionary>
+    <TreeModel modelName="DecisionTreeClassifier" functionName="classification" missingValuePenalty="1.0">
+        <MiningSchema>
+            <MiningField name="battery_power" usageType="active" optype="continuous"/>
+            <MiningField name="blue" usageType="active" optype="continuous"/>
+            <MiningField name="clock_speed" usageType="active" optype="continuous"/>
+            <MiningField name="dual_sim" usageType="active" optype="continuous"/>
+            <MiningField name="fc" usageType="active" optype="continuous"/>
+            <MiningField name="four_g" usageType="active" optype="continuous"/>
+            <MiningField name="int_memory" usageType="active" optype="continuous"/>
+            <MiningField name="m_dep" usageType="active" optype="continuous"/>
+            <MiningField name="mobile_wt" usageType="active" optype="continuous"/>
+            <MiningField name="n_cores" usageType="active" optype="continuous"/>
+            <MiningField name="pc" usageType="active" optype="continuous"/>
+            <MiningField name="px_height" usageType="active" optype="continuous"/>
+            <MiningField name="px_width" usageType="active" optype="continuous"/>
+            <MiningField name="ram" usageType="active" optype="continuous"/>
+            <MiningField name="sc_h" usageType="active" optype="continuous"/>
+            <MiningField name="sc_w" usageType="active" optype="continuous"/>
+            <MiningField name="talk_time" usageType="active" optype="continuous"/>
+            <MiningField name="three_g" usageType="active" optype="continuous"/>
+            <MiningField name="touch_screen" usageType="active" optype="continuous"/>
+            <MiningField name="wifi" usageType="active" optype="continuous"/>
+            <MiningField name="price_range" usageType="target" optype="categorical"/>
+        </MiningSchema>
+        <Output>
+            <OutputField name="probability_0" optype="continuous" dataType="double" feature="probability" value="0"/>
+            <OutputField name="probability_1" optype="continuous" dataType="double" feature="probability" value="1"/>
+            <OutputField name="probability_2" optype="continuous" dataType="double" feature="probability" value="2"/>
+            <OutputField name="probability_3" optype="continuous" dataType="double" feature="probability" value="3"/>
+            <OutputField name="predicted_price_range" optype="categorical" dataType="integer" feature="predictedValue"/>
+        </Output>
+        <Node id="0" recordCount="2000.0">
+            <True/>
+            <Node id="1" recordCount="1045.0">
+                <SimplePredicate field="ram" operator="lessOrEqual" value="2235.5"/>
+                <Node id="2" recordCount="451.0">
+                    <SimplePredicate field="ram" operator="lessOrEqual" value="1106.0"/>
+                    <Node id="3" recordCount="430.0">
+                        <SimplePredicate field="px_height" operator="lessOrEqual" value="1449.0"/>
+                        <Node id="4" recordCount="378.0">
+                            <SimplePredicate field="battery_power" operator="lessOrEqual" value="1804.5"/>
+                            <Node id="5" recordCount="355.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="1052.5"/>
+                                <Node id="6" recordCount="351.0">
+                                    <SimplePredicate field="int_memory" operator="lessOrEqual" value="63.5"/>
+                                    <Node id="7" recordCount="284.0">
+                                        <SimplePredicate field="px_height" operator="lessOrEqual" value="962.0"/>
+                                        <Node id="8" recordCount="274.0">
+                                            <SimplePredicate field="px_width" operator="lessOrEqual" value="1893.5"/>
+                                            <Node id="9" recordCount="12.0">
+                                                <SimplePredicate field="talk_time" operator="lessOrEqual" value="2.5"/>
+                                                <Node id="10" score="0" recordCount="11.0">
+                                                    <SimplePredicate field="battery_power" operator="lessOrEqual" value="1655.5"/>
+                                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="11" score="1" recordCount="1.0">
+                                                    <SimplePredicate field="battery_power" operator="greaterThan" value="1655.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="12" score="0" recordCount="262.0">
+                                                <SimplePredicate field="talk_time" operator="greaterThan" value="2.5"/>
+                                                <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="13" recordCount="10.0">
+                                            <SimplePredicate field="px_width" operator="greaterThan" value="1893.5"/>
+                                            <Node id="14" score="0" recordCount="9.0">
+                                                <SimplePredicate field="ram" operator="lessOrEqual" value="828.5"/>
+                                                <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="15" score="1" recordCount="1.0">
+                                                <SimplePredicate field="ram" operator="greaterThan" value="828.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                    <Node id="16" recordCount="67.0">
+                                        <SimplePredicate field="px_height" operator="greaterThan" value="962.0"/>
+                                        <Node id="17" recordCount="65.0">
+                                            <SimplePredicate field="battery_power" operator="lessOrEqual" value="1684.5"/>
+                                            <Node id="18" score="0" recordCount="53.0">
+                                                <SimplePredicate field="ram" operator="lessOrEqual" value="852.5"/>
+                                                <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="19" recordCount="12.0">
+                                                <SimplePredicate field="ram" operator="greaterThan" value="852.5"/>
+                                                <Node id="20" score="0" recordCount="9.0">
+                                                    <SimplePredicate field="battery_power" operator="lessOrEqual" value="1192.5"/>
+                                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="21" score="1" recordCount="3.0">
+                                                    <SimplePredicate field="battery_power" operator="greaterThan" value="1192.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                        <Node id="22" score="1" recordCount="2.0">
+                                            <SimplePredicate field="battery_power" operator="greaterThan" value="1684.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="23" recordCount="4.0">
+                                    <SimplePredicate field="int_memory" operator="greaterThan" value="63.5"/>
+                                    <Node id="24" score="0" recordCount="2.0">
+                                        <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="152.0"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="25" score="1" recordCount="2.0">
+                                        <SimplePredicate field="mobile_wt" operator="greaterThan" value="152.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="26" recordCount="23.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="1052.5"/>
+                                <Node id="27" recordCount="14.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="1289.0"/>
+                                    <Node id="28" score="1" recordCount="1.0">
+                                        <SimplePredicate field="sc_h" operator="lessOrEqual" value="6.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="29" score="0" recordCount="13.0">
+                                        <SimplePredicate field="sc_h" operator="greaterThan" value="6.5"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="30" recordCount="9.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="1289.0"/>
+                                    <Node id="31" recordCount="7.0">
+                                        <SimplePredicate field="blue" operator="lessOrEqual" value="0.5"/>
+                                        <Node id="32" score="1" recordCount="6.0">
+                                            <SimplePredicate field="int_memory" operator="lessOrEqual" value="43.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="33" score="0" recordCount="1.0">
+                                            <SimplePredicate field="int_memory" operator="greaterThan" value="43.5"/>
+                                            <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="34" score="0" recordCount="2.0">
+                                        <SimplePredicate field="blue" operator="greaterThan" value="0.5"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="35" recordCount="52.0">
+                            <SimplePredicate field="battery_power" operator="greaterThan" value="1804.5"/>
+                            <Node id="36" recordCount="36.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="772.0"/>
+                                <Node id="37" score="0" recordCount="29.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="1681.5"/>
+                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="38" recordCount="7.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="1681.5"/>
+                                    <Node id="39" score="0" recordCount="2.0">
+                                        <SimplePredicate field="int_memory" operator="lessOrEqual" value="27.5"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="40" score="1" recordCount="5.0">
+                                        <SimplePredicate field="int_memory" operator="greaterThan" value="27.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="41" recordCount="16.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="772.0"/>
+                                <Node id="42" recordCount="13.0">
+                                    <SimplePredicate field="clock_speed" operator="lessOrEqual" value="2.55"/>
+                                    <Node id="43" score="0" recordCount="1.0">
+                                        <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="88.5"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="44" score="1" recordCount="12.0">
+                                        <SimplePredicate field="mobile_wt" operator="greaterThan" value="88.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="45" score="0" recordCount="3.0">
+                                    <SimplePredicate field="clock_speed" operator="greaterThan" value="2.55"/>
+                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                            </Node>
+                        </Node>
+                    </Node>
+                    <Node id="46" recordCount="21.0">
+                        <SimplePredicate field="px_height" operator="greaterThan" value="1449.0"/>
+                        <Node id="47" recordCount="8.0">
+                            <SimplePredicate field="battery_power" operator="lessOrEqual" value="1224.5"/>
+                            <Node id="48" score="0" recordCount="5.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="824.0"/>
+                                <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                            </Node>
+                            <Node id="49" score="1" recordCount="3.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="824.0"/>
+                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                            </Node>
+                        </Node>
+                        <Node id="50" score="1" recordCount="13.0">
+                            <SimplePredicate field="battery_power" operator="greaterThan" value="1224.5"/>
+                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                        </Node>
+                    </Node>
+                </Node>
+                <Node id="51" recordCount="594.0">
+                    <SimplePredicate field="ram" operator="greaterThan" value="1106.0"/>
+                    <Node id="52" recordCount="251.0">
+                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1108.5"/>
+                        <Node id="53" recordCount="96.0">
+                            <SimplePredicate field="ram" operator="lessOrEqual" value="1541.0"/>
+                            <Node id="54" recordCount="69.0">
+                                <SimplePredicate field="px_height" operator="lessOrEqual" value="743.5"/>
+                                <Node id="55" score="0" recordCount="63.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="1762.0"/>
+                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="56" recordCount="6.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="1762.0"/>
+                                    <Node id="57" score="1" recordCount="3.0">
+                                        <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="118.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="58" score="0" recordCount="3.0">
+                                        <SimplePredicate field="mobile_wt" operator="greaterThan" value="118.5"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="59" recordCount="27.0">
+                                <SimplePredicate field="px_height" operator="greaterThan" value="743.5"/>
+                                <Node id="60" recordCount="14.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="1510.0"/>
+                                    <Node id="61" score="0" recordCount="7.0">
+                                        <SimplePredicate field="int_memory" operator="lessOrEqual" value="42.5"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="62" recordCount="7.0">
+                                        <SimplePredicate field="int_memory" operator="greaterThan" value="42.5"/>
+                                        <Node id="63" score="0" recordCount="2.0">
+                                            <SimplePredicate field="ram" operator="lessOrEqual" value="1286.5"/>
+                                            <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="64" score="1" recordCount="5.0">
+                                            <SimplePredicate field="ram" operator="greaterThan" value="1286.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="65" score="1" recordCount="13.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="1510.0"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="66" recordCount="155.0">
+                            <SimplePredicate field="ram" operator="greaterThan" value="1541.0"/>
+                            <Node id="67" recordCount="8.0">
+                                <SimplePredicate field="px_width" operator="lessOrEqual" value="625.5"/>
+                                <Node id="68" recordCount="4.0">
+                                    <SimplePredicate field="pc" operator="lessOrEqual" value="9.0"/>
+                                    <Node id="69" score="0" recordCount="1.0">
+                                        <SimplePredicate field="px_width" operator="lessOrEqual" value="523.0"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="70" score="1" recordCount="3.0">
+                                        <SimplePredicate field="px_width" operator="greaterThan" value="523.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="71" score="0" recordCount="4.0">
+                                    <SimplePredicate field="pc" operator="greaterThan" value="9.0"/>
+                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                            </Node>
+                            <Node id="72" recordCount="147.0">
+                                <SimplePredicate field="px_width" operator="greaterThan" value="625.5"/>
+                                <Node id="73" recordCount="140.0">
+                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="1438.0"/>
+                                    <Node id="74" recordCount="136.0">
+                                        <SimplePredicate field="ram" operator="lessOrEqual" value="2217.5"/>
+                                        <Node id="75" recordCount="22.0">
+                                            <SimplePredicate field="ram" operator="lessOrEqual" value="1664.5"/>
+                                            <Node id="76" recordCount="7.0">
+                                                <SimplePredicate field="px_width" operator="lessOrEqual" value="944.0"/>
+                                                <Node id="77" score="0" recordCount="5.0">
+                                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="636.5"/>
+                                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="78" score="1" recordCount="2.0">
+                                                    <SimplePredicate field="px_height" operator="greaterThan" value="636.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="79" recordCount="15.0">
+                                                <SimplePredicate field="px_width" operator="greaterThan" value="944.0"/>
+                                                <Node id="80" score="1" recordCount="13.0">
+                                                    <SimplePredicate field="fc" operator="lessOrEqual" value="7.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="81" recordCount="2.0">
+                                                    <SimplePredicate field="fc" operator="greaterThan" value="7.5"/>
+                                                    <Node id="82" score="0" recordCount="1.0">
+                                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="553.5"/>
+                                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                    <Node id="83" score="1" recordCount="1.0">
+                                                        <SimplePredicate field="battery_power" operator="greaterThan" value="553.5"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                        <Node id="84" recordCount="114.0">
+                                            <SimplePredicate field="ram" operator="greaterThan" value="1664.5"/>
+                                            <Node id="85" recordCount="86.0">
+                                                <SimplePredicate field="px_width" operator="lessOrEqual" value="1559.5"/>
+                                                <Node id="86" recordCount="5.0">
+                                                    <SimplePredicate field="sc_w" operator="lessOrEqual" value="0.5"/>
+                                                    <Node id="87" score="1" recordCount="4.0">
+                                                        <SimplePredicate field="fc" operator="lessOrEqual" value="8.5"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                    <Node id="88" score="0" recordCount="1.0">
+                                                        <SimplePredicate field="fc" operator="greaterThan" value="8.5"/>
+                                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                </Node>
+                                                <Node id="89" score="1" recordCount="81.0">
+                                                    <SimplePredicate field="sc_w" operator="greaterThan" value="0.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="90" recordCount="28.0">
+                                                <SimplePredicate field="px_width" operator="greaterThan" value="1559.5"/>
+                                                <Node id="91" recordCount="26.0">
+                                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="1071.0"/>
+                                                    <Node id="92" score="1" recordCount="22.0">
+                                                        <SimplePredicate field="ram" operator="lessOrEqual" value="2108.5"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                    <Node id="93" recordCount="4.0">
+                                                        <SimplePredicate field="ram" operator="greaterThan" value="2108.5"/>
+                                                        <Node id="94" score="1" recordCount="2.0">
+                                                            <SimplePredicate field="fc" operator="lessOrEqual" value="2.5"/>
+                                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                        </Node>
+                                                        <Node id="95" score="2" recordCount="2.0">
+                                                            <SimplePredicate field="fc" operator="greaterThan" value="2.5"/>
+                                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                        </Node>
+                                                    </Node>
+                                                </Node>
+                                                <Node id="96" score="2" recordCount="2.0">
+                                                    <SimplePredicate field="px_height" operator="greaterThan" value="1071.0"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                    <Node id="97" recordCount="4.0">
+                                        <SimplePredicate field="ram" operator="greaterThan" value="2217.5"/>
+                                        <Node id="98" recordCount="2.0">
+                                            <SimplePredicate field="fc" operator="lessOrEqual" value="8.0"/>
+                                            <Node id="99" score="1" recordCount="1.0">
+                                                <SimplePredicate field="blue" operator="lessOrEqual" value="0.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="100" score="3" recordCount="1.0">
+                                                <SimplePredicate field="blue" operator="greaterThan" value="0.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="101" score="2" recordCount="2.0">
+                                            <SimplePredicate field="fc" operator="greaterThan" value="8.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="102" recordCount="7.0">
+                                    <SimplePredicate field="px_height" operator="greaterThan" value="1438.0"/>
+                                    <Node id="103" recordCount="4.0">
+                                        <SimplePredicate field="ram" operator="lessOrEqual" value="2022.5"/>
+                                        <Node id="104" score="2" recordCount="1.0">
+                                            <SimplePredicate field="sc_w" operator="lessOrEqual" value="2.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="105" score="1" recordCount="3.0">
+                                            <SimplePredicate field="sc_w" operator="greaterThan" value="2.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="106" score="2" recordCount="3.0">
+                                        <SimplePredicate field="ram" operator="greaterThan" value="2022.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                    </Node>
+                    <Node id="107" recordCount="343.0">
+                        <SimplePredicate field="battery_power" operator="greaterThan" value="1108.5"/>
+                        <Node id="108" recordCount="257.0">
+                            <SimplePredicate field="ram" operator="lessOrEqual" value="1896.5"/>
+                            <Node id="109" recordCount="206.0">
+                                <SimplePredicate field="px_height" operator="lessOrEqual" value="1169.0"/>
+                                <Node id="110" recordCount="13.0">
+                                    <SimplePredicate field="ram" operator="lessOrEqual" value="1177.0"/>
+                                    <Node id="111" recordCount="9.0">
+                                        <SimplePredicate field="ram" operator="lessOrEqual" value="1153.5"/>
+                                        <Node id="112" recordCount="8.0">
+                                            <SimplePredicate field="n_cores" operator="lessOrEqual" value="7.0"/>
+                                            <Node id="113" score="1" recordCount="6.0">
+                                                <SimplePredicate field="sc_w" operator="lessOrEqual" value="4.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="114" recordCount="2.0">
+                                                <SimplePredicate field="sc_w" operator="greaterThan" value="4.5"/>
+                                                <Node id="115" score="0" recordCount="1.0">
+                                                    <SimplePredicate field="int_memory" operator="lessOrEqual" value="15.5"/>
+                                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="116" score="1" recordCount="1.0">
+                                                    <SimplePredicate field="int_memory" operator="greaterThan" value="15.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                        <Node id="117" score="0" recordCount="1.0">
+                                            <SimplePredicate field="n_cores" operator="greaterThan" value="7.0"/>
+                                            <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="118" score="0" recordCount="4.0">
+                                        <SimplePredicate field="ram" operator="greaterThan" value="1153.5"/>
+                                        <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="119" recordCount="193.0">
+                                    <SimplePredicate field="ram" operator="greaterThan" value="1177.0"/>
+                                    <Node id="120" recordCount="129.0">
+                                        <SimplePredicate field="ram" operator="lessOrEqual" value="1653.5"/>
+                                        <Node id="121" recordCount="20.0">
+                                            <SimplePredicate field="px_width" operator="lessOrEqual" value="815.5"/>
+                                            <Node id="122" recordCount="4.0">
+                                                <SimplePredicate field="battery_power" operator="lessOrEqual" value="1250.5"/>
+                                                <Node id="123" score="0" recordCount="3.0">
+                                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="599.0"/>
+                                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="124" score="1" recordCount="1.0">
+                                                    <SimplePredicate field="px_height" operator="greaterThan" value="599.0"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="125" score="1" recordCount="16.0">
+                                                <SimplePredicate field="battery_power" operator="greaterThan" value="1250.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="126" recordCount="109.0">
+                                            <SimplePredicate field="px_width" operator="greaterThan" value="815.5"/>
+                                            <Node id="127" recordCount="6.0">
+                                                <SimplePredicate field="pc" operator="lessOrEqual" value="0.5"/>
+                                                <Node id="128" score="0" recordCount="1.0">
+                                                    <SimplePredicate field="clock_speed" operator="lessOrEqual" value="0.75"/>
+                                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="129" score="1" recordCount="5.0">
+                                                    <SimplePredicate field="clock_speed" operator="greaterThan" value="0.75"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="130" recordCount="103.0">
+                                                <SimplePredicate field="pc" operator="greaterThan" value="0.5"/>
+                                                <Node id="131" score="1" recordCount="95.0">
+                                                    <SimplePredicate field="n_cores" operator="lessOrEqual" value="7.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="132" recordCount="8.0">
+                                                    <SimplePredicate field="n_cores" operator="greaterThan" value="7.5"/>
+                                                    <Node id="133" score="2" recordCount="1.0">
+                                                        <SimplePredicate field="pc" operator="lessOrEqual" value="6.5"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                    <Node id="134" score="1" recordCount="7.0">
+                                                        <SimplePredicate field="pc" operator="greaterThan" value="6.5"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                    <Node id="135" recordCount="64.0">
+                                        <SimplePredicate field="ram" operator="greaterThan" value="1653.5"/>
+                                        <Node id="136" recordCount="38.0">
+                                            <SimplePredicate field="px_width" operator="lessOrEqual" value="1198.0"/>
+                                            <Node id="137" recordCount="2.0">
+                                                <SimplePredicate field="px_width" operator="lessOrEqual" value="518.5"/>
+                                                <Node id="138" score="0" recordCount="1.0">
+                                                    <SimplePredicate field="ram" operator="lessOrEqual" value="1698.0"/>
+                                                    <ScoreDistribution value="0" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="139" score="1" recordCount="1.0">
+                                                    <SimplePredicate field="ram" operator="greaterThan" value="1698.0"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="140" recordCount="36.0">
+                                                <SimplePredicate field="px_width" operator="greaterThan" value="518.5"/>
+                                                <Node id="141" score="1" recordCount="31.0">
+                                                    <SimplePredicate field="ram" operator="lessOrEqual" value="1883.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="142" recordCount="5.0">
+                                                    <SimplePredicate field="ram" operator="greaterThan" value="1883.5"/>
+                                                    <Node id="143" score="2" recordCount="1.0">
+                                                        <SimplePredicate field="clock_speed" operator="lessOrEqual" value="1.4000001"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                    <Node id="144" score="1" recordCount="4.0">
+                                                        <SimplePredicate field="clock_speed" operator="greaterThan" value="1.4000001"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                        <Node id="145" recordCount="26.0">
+                                            <SimplePredicate field="px_width" operator="greaterThan" value="1198.0"/>
+                                            <Node id="146" recordCount="16.0">
+                                                <SimplePredicate field="battery_power" operator="lessOrEqual" value="1622.0"/>
+                                                <Node id="147" recordCount="14.0">
+                                                    <SimplePredicate field="sc_w" operator="lessOrEqual" value="11.5"/>
+                                                    <Node id="148" score="1" recordCount="13.0">
+                                                        <SimplePredicate field="int_memory" operator="lessOrEqual" value="58.0"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                    <Node id="149" score="2" recordCount="1.0">
+                                                        <SimplePredicate field="int_memory" operator="greaterThan" value="58.0"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                    </Node>
+                                                </Node>
+                                                <Node id="150" score="2" recordCount="2.0">
+                                                    <SimplePredicate field="sc_w" operator="greaterThan" value="11.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="151" score="2" recordCount="10.0">
+                                                <SimplePredicate field="battery_power" operator="greaterThan" value="1622.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="152" recordCount="51.0">
+                                <SimplePredicate field="px_height" operator="greaterThan" value="1169.0"/>
+                                <Node id="153" recordCount="30.0">
+                                    <SimplePredicate field="ram" operator="lessOrEqual" value="1503.0"/>
+                                    <Node id="154" recordCount="27.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1961.5"/>
+                                        <Node id="155" recordCount="4.0">
+                                            <SimplePredicate field="m_dep" operator="lessOrEqual" value="0.2"/>
+                                            <Node id="156" score="1" recordCount="1.0">
+                                                <SimplePredicate field="battery_power" operator="lessOrEqual" value="1437.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="157" score="2" recordCount="3.0">
+                                                <SimplePredicate field="battery_power" operator="greaterThan" value="1437.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="158" recordCount="23.0">
+                                            <SimplePredicate field="m_dep" operator="greaterThan" value="0.2"/>
+                                            <Node id="159" score="2" recordCount="1.0">
+                                                <SimplePredicate field="talk_time" operator="lessOrEqual" value="2.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="160" recordCount="22.0">
+                                                <SimplePredicate field="talk_time" operator="greaterThan" value="2.5"/>
+                                                <Node id="161" score="1" recordCount="21.0">
+                                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="1856.0"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="162" score="2" recordCount="1.0">
+                                                    <SimplePredicate field="px_height" operator="greaterThan" value="1856.0"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                    <Node id="163" score="2" recordCount="3.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1961.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="164" recordCount="21.0">
+                                    <SimplePredicate field="ram" operator="greaterThan" value="1503.0"/>
+                                    <Node id="165" score="1" recordCount="2.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1181.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="166" recordCount="19.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1181.0"/>
+                                        <Node id="167" recordCount="3.0">
+                                            <SimplePredicate field="pc" operator="lessOrEqual" value="1.5"/>
+                                            <Node id="168" score="2" recordCount="2.0">
+                                                <SimplePredicate field="ram" operator="lessOrEqual" value="1695.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="169" score="1" recordCount="1.0">
+                                                <SimplePredicate field="ram" operator="greaterThan" value="1695.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="170" score="2" recordCount="16.0">
+                                            <SimplePredicate field="pc" operator="greaterThan" value="1.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="171" recordCount="86.0">
+                            <SimplePredicate field="ram" operator="greaterThan" value="1896.5"/>
+                            <Node id="172" recordCount="34.0">
+                                <SimplePredicate field="px_width" operator="lessOrEqual" value="1069.0"/>
+                                <Node id="173" score="1" recordCount="19.0">
+                                    <SimplePredicate field="battery_power" operator="lessOrEqual" value="1467.0"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="174" recordCount="15.0">
+                                    <SimplePredicate field="battery_power" operator="greaterThan" value="1467.0"/>
+                                    <Node id="175" score="1" recordCount="5.0">
+                                        <SimplePredicate field="px_height" operator="lessOrEqual" value="396.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="176" recordCount="10.0">
+                                        <SimplePredicate field="px_height" operator="greaterThan" value="396.5"/>
+                                        <Node id="177" score="1" recordCount="2.0">
+                                            <SimplePredicate field="px_width" operator="lessOrEqual" value="630.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="178" score="2" recordCount="8.0">
+                                            <SimplePredicate field="px_width" operator="greaterThan" value="630.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="179" recordCount="52.0">
+                                <SimplePredicate field="px_width" operator="greaterThan" value="1069.0"/>
+                                <Node id="180" recordCount="51.0">
+                                    <SimplePredicate field="ram" operator="lessOrEqual" value="2223.0"/>
+                                    <Node id="181" recordCount="7.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1184.0"/>
+                                        <Node id="182" score="1" recordCount="2.0">
+                                            <SimplePredicate field="ram" operator="lessOrEqual" value="1976.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="183" score="2" recordCount="5.0">
+                                            <SimplePredicate field="ram" operator="greaterThan" value="1976.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="184" score="2" recordCount="44.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1184.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="185" score="1" recordCount="1.0">
+                                    <SimplePredicate field="ram" operator="greaterThan" value="2223.0"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                            </Node>
+                        </Node>
+                    </Node>
+                </Node>
+            </Node>
+            <Node id="186" recordCount="955.0">
+                <SimplePredicate field="ram" operator="greaterThan" value="2235.5"/>
+                <Node id="187" recordCount="434.0">
+                    <SimplePredicate field="ram" operator="lessOrEqual" value="3013.5"/>
+                    <Node id="188" recordCount="351.0">
+                        <SimplePredicate field="px_height" operator="lessOrEqual" value="1054.5"/>
+                        <Node id="189" recordCount="112.0">
+                            <SimplePredicate field="battery_power" operator="lessOrEqual" value="932.5"/>
+                            <Node id="190" recordCount="61.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="2658.5"/>
+                                <Node id="191" recordCount="41.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="1374.5"/>
+                                    <Node id="192" score="2" recordCount="1.0">
+                                        <SimplePredicate field="int_memory" operator="lessOrEqual" value="3.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="193" recordCount="40.0">
+                                        <SimplePredicate field="int_memory" operator="greaterThan" value="3.0"/>
+                                        <Node id="194" score="1" recordCount="36.0">
+                                            <SimplePredicate field="px_height" operator="lessOrEqual" value="835.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="195" recordCount="4.0">
+                                            <SimplePredicate field="px_height" operator="greaterThan" value="835.0"/>
+                                            <Node id="196" score="2" recordCount="1.0">
+                                                <SimplePredicate field="px_height" operator="lessOrEqual" value="865.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="197" score="1" recordCount="3.0">
+                                                <SimplePredicate field="px_height" operator="greaterThan" value="865.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="198" recordCount="20.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="1374.5"/>
+                                    <Node id="199" recordCount="18.0">
+                                        <SimplePredicate field="n_cores" operator="lessOrEqual" value="7.5"/>
+                                        <Node id="200" recordCount="3.0">
+                                            <SimplePredicate field="pc" operator="lessOrEqual" value="4.5"/>
+                                            <Node id="201" score="1" recordCount="2.0">
+                                                <SimplePredicate field="int_memory" operator="lessOrEqual" value="46.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="202" score="2" recordCount="1.0">
+                                                <SimplePredicate field="int_memory" operator="greaterThan" value="46.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="203" score="2" recordCount="15.0">
+                                            <SimplePredicate field="pc" operator="greaterThan" value="4.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="204" score="1" recordCount="2.0">
+                                        <SimplePredicate field="n_cores" operator="greaterThan" value="7.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="205" recordCount="51.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="2658.5"/>
+                                <Node id="206" recordCount="3.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="560.5"/>
+                                    <Node id="207" score="1" recordCount="2.0">
+                                        <SimplePredicate field="pc" operator="lessOrEqual" value="14.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="208" score="2" recordCount="1.0">
+                                        <SimplePredicate field="pc" operator="greaterThan" value="14.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="209" recordCount="48.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="560.5"/>
+                                    <Node id="210" recordCount="5.0">
+                                        <SimplePredicate field="px_width" operator="lessOrEqual" value="740.5"/>
+                                        <Node id="211" score="2" recordCount="4.0">
+                                            <SimplePredicate field="n_cores" operator="lessOrEqual" value="7.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="212" score="1" recordCount="1.0">
+                                            <SimplePredicate field="n_cores" operator="greaterThan" value="7.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="213" score="2" recordCount="43.0">
+                                        <SimplePredicate field="px_width" operator="greaterThan" value="740.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="214" recordCount="239.0">
+                            <SimplePredicate field="battery_power" operator="greaterThan" value="932.5"/>
+                            <Node id="215" recordCount="171.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="2724.5"/>
+                                <Node id="216" recordCount="51.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="818.5"/>
+                                    <Node id="217" recordCount="25.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1452.0"/>
+                                        <Node id="218" recordCount="17.0">
+                                            <SimplePredicate field="ram" operator="lessOrEqual" value="2475.5"/>
+                                            <Node id="219" recordCount="3.0">
+                                                <SimplePredicate field="m_dep" operator="lessOrEqual" value="0.25"/>
+                                                <Node id="220" score="2" recordCount="2.0">
+                                                    <SimplePredicate field="dual_sim" operator="lessOrEqual" value="0.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                                <Node id="221" score="1" recordCount="1.0">
+                                                    <SimplePredicate field="dual_sim" operator="greaterThan" value="0.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="222" score="1" recordCount="14.0">
+                                                <SimplePredicate field="m_dep" operator="greaterThan" value="0.25"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="223" score="2" recordCount="8.0">
+                                            <SimplePredicate field="ram" operator="greaterThan" value="2475.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="224" score="2" recordCount="26.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1452.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="225" recordCount="120.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="818.5"/>
+                                    <Node id="226" recordCount="107.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1874.0"/>
+                                        <Node id="227" recordCount="104.0">
+                                            <SimplePredicate field="m_dep" operator="lessOrEqual" value="0.95"/>
+                                            <Node id="228" recordCount="100.0">
+                                                <SimplePredicate field="int_memory" operator="lessOrEqual" value="60.5"/>
+                                                <Node id="229" recordCount="16.0">
+                                                    <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="101.5"/>
+                                                    <Node id="230" score="3" recordCount="1.0">
+                                                        <SimplePredicate field="m_dep" operator="lessOrEqual" value="0.15"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                                    </Node>
+                                                    <Node id="231" recordCount="15.0">
+                                                        <SimplePredicate field="m_dep" operator="greaterThan" value="0.15"/>
+                                                        <Node id="232" score="1" recordCount="1.0">
+                                                            <SimplePredicate field="ram" operator="lessOrEqual" value="2292.5"/>
+                                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                        </Node>
+                                                        <Node id="233" score="2" recordCount="14.0">
+                                                            <SimplePredicate field="ram" operator="greaterThan" value="2292.5"/>
+                                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                        </Node>
+                                                    </Node>
+                                                </Node>
+                                                <Node id="234" score="2" recordCount="84.0">
+                                                    <SimplePredicate field="mobile_wt" operator="greaterThan" value="101.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="235" recordCount="4.0">
+                                                <SimplePredicate field="int_memory" operator="greaterThan" value="60.5"/>
+                                                <Node id="236" score="3" recordCount="1.0">
+                                                    <SimplePredicate field="sc_w" operator="lessOrEqual" value="3.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                                </Node>
+                                                <Node id="237" score="2" recordCount="3.0">
+                                                    <SimplePredicate field="sc_w" operator="greaterThan" value="3.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                        <Node id="238" recordCount="3.0">
+                                            <SimplePredicate field="m_dep" operator="greaterThan" value="0.95"/>
+                                            <Node id="239" score="2" recordCount="2.0">
+                                                <SimplePredicate field="ram" operator="lessOrEqual" value="2585.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="240" score="3" recordCount="1.0">
+                                                <SimplePredicate field="ram" operator="greaterThan" value="2585.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                    <Node id="241" recordCount="13.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1874.0"/>
+                                        <Node id="242" recordCount="9.0">
+                                            <SimplePredicate field="px_width" operator="lessOrEqual" value="1504.5"/>
+                                            <Node id="243" score="2" recordCount="8.0">
+                                                <SimplePredicate field="talk_time" operator="lessOrEqual" value="19.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="244" score="3" recordCount="1.0">
+                                                <SimplePredicate field="talk_time" operator="greaterThan" value="19.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="245" score="3" recordCount="4.0">
+                                            <SimplePredicate field="px_width" operator="greaterThan" value="1504.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="246" recordCount="68.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="2724.5"/>
+                                <Node id="247" recordCount="31.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="1018.5"/>
+                                    <Node id="248" score="2" recordCount="27.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1937.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="249" recordCount="4.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1937.5"/>
+                                        <Node id="250" score="3" recordCount="2.0">
+                                            <SimplePredicate field="battery_power" operator="lessOrEqual" value="1973.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                        <Node id="251" score="2" recordCount="2.0">
+                                            <SimplePredicate field="battery_power" operator="greaterThan" value="1973.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="252" recordCount="37.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="1018.5"/>
+                                    <Node id="253" recordCount="12.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1331.0"/>
+                                        <Node id="254" score="3" recordCount="1.0">
+                                            <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="99.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                        <Node id="255" score="2" recordCount="11.0">
+                                            <SimplePredicate field="mobile_wt" operator="greaterThan" value="99.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="256" recordCount="25.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1331.0"/>
+                                        <Node id="257" recordCount="23.0">
+                                            <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="195.0"/>
+                                            <Node id="258" recordCount="3.0">
+                                                <SimplePredicate field="px_height" operator="lessOrEqual" value="128.0"/>
+                                                <Node id="259" score="3" recordCount="1.0">
+                                                    <SimplePredicate field="talk_time" operator="lessOrEqual" value="8.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                                </Node>
+                                                <Node id="260" score="2" recordCount="2.0">
+                                                    <SimplePredicate field="talk_time" operator="greaterThan" value="8.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                            <Node id="261" recordCount="20.0">
+                                                <SimplePredicate field="px_height" operator="greaterThan" value="128.0"/>
+                                                <Node id="262" recordCount="19.0">
+                                                    <SimplePredicate field="int_memory" operator="lessOrEqual" value="60.5"/>
+                                                    <Node id="263" recordCount="2.0">
+                                                        <SimplePredicate field="int_memory" operator="lessOrEqual" value="8.5"/>
+                                                        <Node id="264" score="3" recordCount="1.0">
+                                                            <SimplePredicate field="clock_speed" operator="lessOrEqual" value="1.5"/>
+                                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                                        </Node>
+                                                        <Node id="265" score="2" recordCount="1.0">
+                                                            <SimplePredicate field="clock_speed" operator="greaterThan" value="1.5"/>
+                                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                        </Node>
+                                                    </Node>
+                                                    <Node id="266" score="3" recordCount="17.0">
+                                                        <SimplePredicate field="int_memory" operator="greaterThan" value="8.5"/>
+                                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                                    </Node>
+                                                </Node>
+                                                <Node id="267" score="2" recordCount="1.0">
+                                                    <SimplePredicate field="int_memory" operator="greaterThan" value="60.5"/>
+                                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                                </Node>
+                                            </Node>
+                                        </Node>
+                                        <Node id="268" score="2" recordCount="2.0">
+                                            <SimplePredicate field="mobile_wt" operator="greaterThan" value="195.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                    </Node>
+                    <Node id="269" recordCount="83.0">
+                        <SimplePredicate field="px_height" operator="greaterThan" value="1054.5"/>
+                        <Node id="270" recordCount="41.0">
+                            <SimplePredicate field="battery_power" operator="lessOrEqual" value="1152.0"/>
+                            <Node id="271" score="2" recordCount="31.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="2793.0"/>
+                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                            </Node>
+                            <Node id="272" recordCount="10.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="2793.0"/>
+                                <Node id="273" score="2" recordCount="4.0">
+                                    <SimplePredicate field="n_cores" operator="lessOrEqual" value="3.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="274" recordCount="6.0">
+                                    <SimplePredicate field="n_cores" operator="greaterThan" value="3.5"/>
+                                    <Node id="275" score="2" recordCount="1.0">
+                                        <SimplePredicate field="px_height" operator="lessOrEqual" value="1103.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="276" score="3" recordCount="5.0">
+                                        <SimplePredicate field="px_height" operator="greaterThan" value="1103.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="277" recordCount="42.0">
+                            <SimplePredicate field="battery_power" operator="greaterThan" value="1152.0"/>
+                            <Node id="278" recordCount="12.0">
+                                <SimplePredicate field="pc" operator="lessOrEqual" value="5.5"/>
+                                <Node id="279" score="2" recordCount="5.0">
+                                    <SimplePredicate field="talk_time" operator="lessOrEqual" value="11.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="280" recordCount="7.0">
+                                    <SimplePredicate field="talk_time" operator="greaterThan" value="11.5"/>
+                                    <Node id="281" score="2" recordCount="1.0">
+                                        <SimplePredicate field="px_width" operator="lessOrEqual" value="1381.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="282" score="3" recordCount="6.0">
+                                        <SimplePredicate field="px_width" operator="greaterThan" value="1381.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="283" recordCount="30.0">
+                                <SimplePredicate field="pc" operator="greaterThan" value="5.5"/>
+                                <Node id="284" recordCount="28.0">
+                                    <SimplePredicate field="clock_speed" operator="lessOrEqual" value="2.85"/>
+                                    <Node id="285" recordCount="2.0">
+                                        <SimplePredicate field="px_width" operator="lessOrEqual" value="1265.0"/>
+                                        <Node id="286" score="3" recordCount="1.0">
+                                            <SimplePredicate field="int_memory" operator="lessOrEqual" value="20.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                        <Node id="287" score="2" recordCount="1.0">
+                                            <SimplePredicate field="int_memory" operator="greaterThan" value="20.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="288" score="3" recordCount="26.0">
+                                        <SimplePredicate field="px_width" operator="greaterThan" value="1265.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="289" score="2" recordCount="2.0">
+                                    <SimplePredicate field="clock_speed" operator="greaterThan" value="2.85"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                            </Node>
+                        </Node>
+                    </Node>
+                </Node>
+                <Node id="290" recordCount="521.0">
+                    <SimplePredicate field="ram" operator="greaterThan" value="3013.5"/>
+                    <Node id="291" recordCount="178.0">
+                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="999.5"/>
+                        <Node id="292" recordCount="99.0">
+                            <SimplePredicate field="px_height" operator="lessOrEqual" value="576.0"/>
+                            <Node id="293" recordCount="72.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="3738.0"/>
+                                <Node id="294" recordCount="49.0">
+                                    <SimplePredicate field="px_width" operator="lessOrEqual" value="1316.5"/>
+                                    <Node id="295" recordCount="6.0">
+                                        <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="104.5"/>
+                                        <Node id="296" score="2" recordCount="2.0">
+                                            <SimplePredicate field="ram" operator="lessOrEqual" value="3346.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="297" score="3" recordCount="4.0">
+                                            <SimplePredicate field="ram" operator="greaterThan" value="3346.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="298" recordCount="43.0">
+                                        <SimplePredicate field="mobile_wt" operator="greaterThan" value="104.5"/>
+                                        <Node id="299" score="2" recordCount="38.0">
+                                            <SimplePredicate field="m_dep" operator="lessOrEqual" value="0.95"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="300" recordCount="5.0">
+                                            <SimplePredicate field="m_dep" operator="greaterThan" value="0.95"/>
+                                            <Node id="301" score="2" recordCount="4.0">
+                                                <SimplePredicate field="px_height" operator="lessOrEqual" value="436.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="302" score="3" recordCount="1.0">
+                                                <SimplePredicate field="px_height" operator="greaterThan" value="436.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="303" recordCount="23.0">
+                                    <SimplePredicate field="px_width" operator="greaterThan" value="1316.5"/>
+                                    <Node id="304" recordCount="10.0">
+                                        <SimplePredicate field="ram" operator="lessOrEqual" value="3402.0"/>
+                                        <Node id="305" score="3" recordCount="1.0">
+                                            <SimplePredicate field="pc" operator="lessOrEqual" value="0.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                        <Node id="306" score="2" recordCount="9.0">
+                                            <SimplePredicate field="pc" operator="greaterThan" value="0.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="307" recordCount="13.0">
+                                        <SimplePredicate field="ram" operator="greaterThan" value="3402.0"/>
+                                        <Node id="308" score="2" recordCount="1.0">
+                                            <SimplePredicate field="battery_power" operator="lessOrEqual" value="667.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="309" score="3" recordCount="12.0">
+                                            <SimplePredicate field="battery_power" operator="greaterThan" value="667.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="310" recordCount="27.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="3738.0"/>
+                                <Node id="311" recordCount="7.0">
+                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="121.0"/>
+                                    <Node id="312" score="2" recordCount="3.0">
+                                        <SimplePredicate field="clock_speed" operator="lessOrEqual" value="1.85"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="313" recordCount="4.0">
+                                        <SimplePredicate field="clock_speed" operator="greaterThan" value="1.85"/>
+                                        <Node id="314" recordCount="2.0">
+                                            <SimplePredicate field="sc_w" operator="lessOrEqual" value="nan"/>
+                                            <Node id="315" score="3" recordCount="1.0">
+                                                <SimplePredicate field="fc" operator="lessOrEqual" value="4.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                            </Node>
+                                            <Node id="316" score="1" recordCount="1.0">
+                                                <SimplePredicate field="fc" operator="greaterThan" value="4.5"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="317" recordCount="2.0">
+                                            <SimplePredicate field="sc_w" operator="greaterThan" value="nan"/>
+                                            <Node id="318" score="3" recordCount="1.0">
+                                                <SimplePredicate field="ram" operator="lessOrEqual" value="nan"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                            </Node>
+                                            <Node id="319" score="1" recordCount="1.0">
+                                                <SimplePredicate field="ram" operator="greaterThan" value="nan"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="320" recordCount="20.0">
+                                    <SimplePredicate field="px_height" operator="greaterThan" value="121.0"/>
+                                    <Node id="321" score="3" recordCount="19.0">
+                                        <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="190.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                    </Node>
+                                    <Node id="322" score="2" recordCount="1.0">
+                                        <SimplePredicate field="mobile_wt" operator="greaterThan" value="190.0"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="323" recordCount="79.0">
+                            <SimplePredicate field="px_height" operator="greaterThan" value="576.0"/>
+                            <Node id="324" recordCount="22.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="3344.5"/>
+                                <Node id="325" score="2" recordCount="6.0">
+                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="768.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="326" recordCount="16.0">
+                                    <SimplePredicate field="px_height" operator="greaterThan" value="768.5"/>
+                                    <Node id="327" recordCount="4.0">
+                                        <SimplePredicate field="px_width" operator="lessOrEqual" value="1351.5"/>
+                                        <Node id="328" score="2" recordCount="2.0">
+                                            <SimplePredicate field="dual_sim" operator="lessOrEqual" value="0.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="329" score="3" recordCount="2.0">
+                                            <SimplePredicate field="dual_sim" operator="greaterThan" value="0.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="330" score="3" recordCount="12.0">
+                                        <SimplePredicate field="px_width" operator="greaterThan" value="1351.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="331" recordCount="57.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="3344.5"/>
+                                <Node id="332" recordCount="3.0">
+                                    <SimplePredicate field="pc" operator="lessOrEqual" value="1.5"/>
+                                    <Node id="333" score="2" recordCount="1.0">
+                                        <SimplePredicate field="px_width" operator="lessOrEqual" value="1094.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                    <Node id="334" score="3" recordCount="2.0">
+                                        <SimplePredicate field="px_width" operator="greaterThan" value="1094.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                    </Node>
+                                </Node>
+                                <Node id="335" score="3" recordCount="54.0">
+                                    <SimplePredicate field="pc" operator="greaterThan" value="1.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                </Node>
+                            </Node>
+                        </Node>
+                    </Node>
+                    <Node id="336" recordCount="343.0">
+                        <SimplePredicate field="battery_power" operator="greaterThan" value="999.5"/>
+                        <Node id="337" recordCount="102.0">
+                            <SimplePredicate field="ram" operator="lessOrEqual" value="3314.5"/>
+                            <Node id="338" recordCount="16.0">
+                                <SimplePredicate field="px_width" operator="lessOrEqual" value="755.5"/>
+                                <Node id="339" score="2" recordCount="9.0">
+                                    <SimplePredicate field="battery_power" operator="lessOrEqual" value="1512.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                                <Node id="340" recordCount="7.0">
+                                    <SimplePredicate field="battery_power" operator="greaterThan" value="1512.5"/>
+                                    <Node id="341" score="3" recordCount="5.0">
+                                        <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="175.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                    </Node>
+                                    <Node id="342" score="2" recordCount="2.0">
+                                        <SimplePredicate field="mobile_wt" operator="greaterThan" value="175.5"/>
+                                        <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                        <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                        <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                    </Node>
+                                </Node>
+                            </Node>
+                            <Node id="343" recordCount="86.0">
+                                <SimplePredicate field="px_width" operator="greaterThan" value="755.5"/>
+                                <Node id="344" recordCount="18.0">
+                                    <SimplePredicate field="px_height" operator="lessOrEqual" value="193.5"/>
+                                    <Node id="345" recordCount="9.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1447.5"/>
+                                        <Node id="346" score="2" recordCount="6.0">
+                                            <SimplePredicate field="px_width" operator="lessOrEqual" value="1539.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                        <Node id="347" score="3" recordCount="3.0">
+                                            <SimplePredicate field="px_width" operator="greaterThan" value="1539.5"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="348" recordCount="9.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1447.5"/>
+                                        <Node id="349" score="3" recordCount="8.0">
+                                            <SimplePredicate field="px_height" operator="lessOrEqual" value="150.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                        <Node id="350" score="2" recordCount="1.0">
+                                            <SimplePredicate field="px_height" operator="greaterThan" value="150.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                                <Node id="351" recordCount="68.0">
+                                    <SimplePredicate field="px_height" operator="greaterThan" value="193.5"/>
+                                    <Node id="352" recordCount="2.0">
+                                        <SimplePredicate field="battery_power" operator="lessOrEqual" value="1019.0"/>
+                                        <Node id="353" score="3" recordCount="1.0">
+                                            <SimplePredicate field="mobile_wt" operator="lessOrEqual" value="154.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                        <Node id="354" score="2" recordCount="1.0">
+                                            <SimplePredicate field="mobile_wt" operator="greaterThan" value="154.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                            <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                        </Node>
+                                    </Node>
+                                    <Node id="355" recordCount="66.0">
+                                        <SimplePredicate field="battery_power" operator="greaterThan" value="1019.0"/>
+                                        <Node id="356" recordCount="3.0">
+                                            <SimplePredicate field="int_memory" operator="lessOrEqual" value="5.0"/>
+                                            <Node id="357" score="2" recordCount="1.0">
+                                                <SimplePredicate field="px_height" operator="lessOrEqual" value="490.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                                <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                            </Node>
+                                            <Node id="358" score="3" recordCount="2.0">
+                                                <SimplePredicate field="px_height" operator="greaterThan" value="490.0"/>
+                                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                            </Node>
+                                        </Node>
+                                        <Node id="359" score="3" recordCount="63.0">
+                                            <SimplePredicate field="int_memory" operator="greaterThan" value="5.0"/>
+                                            <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                            <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                        </Node>
+                                    </Node>
+                                </Node>
+                            </Node>
+                        </Node>
+                        <Node id="360" recordCount="241.0">
+                            <SimplePredicate field="ram" operator="greaterThan" value="3314.5"/>
+                            <Node id="361" recordCount="13.0">
+                                <SimplePredicate field="ram" operator="lessOrEqual" value="3351.5"/>
+                                <Node id="362" score="3" recordCount="12.0">
+                                    <SimplePredicate field="ram" operator="lessOrEqual" value="3349.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                                </Node>
+                                <Node id="363" score="2" recordCount="1.0">
+                                    <SimplePredicate field="ram" operator="greaterThan" value="3349.5"/>
+                                    <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                    <ScoreDistribution value="2" recordCount="1.0" confidence="1.0"/>
+                                    <ScoreDistribution value="3" recordCount="0.0" confidence="0.0"/>
+                                </Node>
+                            </Node>
+                            <Node id="364" score="3" recordCount="228.0">
+                                <SimplePredicate field="ram" operator="greaterThan" value="3351.5"/>
+                                <ScoreDistribution value="0" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="1" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="2" recordCount="0.0" confidence="0.0"/>
+                                <ScoreDistribution value="3" recordCount="1.0" confidence="1.0"/>
+                            </Node>
+                        </Node>
+                    </Node>
+                </Node>
+            </Node>
+        </Node>
+    </TreeModel>
+</PMML>
